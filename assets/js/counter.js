@@ -49,6 +49,7 @@ window.onload = function () {
      clearInterval(Interval);
     tens = "00";
   	seconds = "00";
+    minutes = "00";
     appendTens.innerHTML = tens;
   	appendSeconds.innerHTML = seconds;
   }
@@ -56,11 +57,11 @@ window.onload = function () {
 
 
   function startTimer () {
-    tens++;
+      tens++;
 
     if(tens < 9){
       appendTens.innerHTML = "0" + tens;
-    }
+   }
 
     if (tens > 9){
       appendTens.innerHTML = tens;
