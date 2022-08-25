@@ -31,17 +31,47 @@
       </p>
     </header>
 
-    <!-- Give -->
-
-    <!-- <ul>
-      <a href="give.html" class="button" class="raise">Give</a>
-    </ul> -->
-
-    <!-- Signup Form -->
-    <form id="signup-form" method="post" action="https://formspree.io/xzbjbjol">
-      <input type="email" name="email" id="email" placeholder="Email Address" />
-      <input type="submit" value="Sign Up" />
+    <!-- Signup Form  https://script.google.com/macros/s/AKfycbw1DgN2OyCRSK9qFocxxqabsKQoDO0m0_VMKeZ1jyk06gX14CUmBeMfhdXZLuQV0wzgGA/exec -->
+    <form name="waiting-list">
+      <h4>Join our waiting list</h4>
+      <input type="email" name="email" placeholder="Email Address" required />
+      <input
+        type="submit"
+        value="Submit"
+        style="max-width: 150px"
+        onClick="submitForm()"
+      />
+      <script>
+        function submitForm() {
+          const scriptURL =
+            'https://script.google.com/macros/s/AKfycbw1DgN2OyCRSK9qFocxxqabsKQoDO0m0_VMKeZ1jyk06gX14CUmBeMfhdXZLuQV0wzgGA/exec'
+          const form = document.forms['waiting-list']
+          form.addEventListener('submit', (e) => {
+            e.preventDefault()
+            fetch(scriptURL, {
+              method: 'POST',
+              body: new FormData(form),
+            }).then(document.forms['waiting-list'].reset())
+          })
+          form.addEventListener('submit', onSubmit)
+          function onSubmit() {
+            alert(
+              'Thanks! We will contact you when we release new alpha invitations.'
+            )
+          }
+        }
+      </script>
     </form>
+
+    <!-- Give -->
+    <!-- <h3>Donate Today</h3>
+    <p>
+      Make a tax-deductible contribution to the Earn to Give Charitable Fund,
+      and we'll process your grants to any of the 1.7M charities in the USA.
+    </p>
+    <ul>
+      <a href="give.html" class="button" class="raise">Make a Contribution</a>
+    </ul> -->
 
     <!-- Footer -->
     <footer id="footer">
@@ -49,9 +79,9 @@
         <li>
           &copy;
           <script>
-            document.write(new Date().getFullYear());
+            document.write(new Date().getFullYear())
           </script>
-          Earn to Give
+          Earn to Give Charitable Fund
         </li>
       </ul>
     </footer>
